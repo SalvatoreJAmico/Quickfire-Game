@@ -1,0 +1,1227 @@
+Milestone: Milestone 9 - Final Design Document
+
+Abstract
+
+The "Quickfire Game" is a 2-4 player game built around an Arduino board, ideal for group enjoyment and skill enhancement. It challenges players to swiftly react to a light and sound cue, with their reaction times sparking friendly rivalry. It features multiplayer and single-player modes and is perfect for gatherings and solo play. The construction includes assembling LEDs, buttons, resistors, and an LCD into a case, offering a hands-on experience in electronics. The "Quickfire Game" is an excellent choice for family and friends, combining entertainment with educational value.
+
+Overall Description of Project Idea
+
+The "Quickfire Game" is a fun and interactive project designed for 2 to 4 players. This project is ideal for bringing people together, offering an entertaining and engaging way to enjoy each other's company while indulging in a bit of friendly competition. The game begins with a random delay signaled by pulsing white lights, after which players must react to white light and a piezo sound to press their button as quickly as possible. The project involves assembling a circuit with elements like LEDs, buttons, resistors, and an LCD for display, all of which are assembled in a custom case. The case design, which is crafted from materials like plexiglass and wood, ensures the game is strong and visually appealing.
+
+2. Final Project Design stating how Multiple Arduinos will be used
+
+Receiving the communication from the Transmitter(T1), receiver 1 (R1), receiver 2 (R2), and receiver 3 (R3) will delegate game component signals and instructions to the various game lights displays and switches to be interacted with by the players.
+
+T1 will control the LCD screen and supply power to the other controllers. Additionally, transmits commands serially to the controllers and receives input from the game buttons and the on/off switch.
+
+R1 will be responsible for the gameplay LED lights.
+
+R2 will be responsible for the game's white lights and sound and will hold its corresponding playlist.
+
+R3 will be responsible for the on/off LED light.
+
+3. Final Plan for Use and Communication between the multiple Arduinos
+
+This project utilizes four Arduino uno R3 cards in serial communication, one of which is the transmitter  (T1), and the other three are the receivers (R1), (R2), and (R3). The transmitter will be responsible for the game logic. Displaying the messages on the LCD screen and receiving signals from the play buttons. The (T1) will also transmit commands to the other three receivers, activating their components appropriately. (R1) will light the gameplay LEDs if 1, 3, 5, and 7 are received from the serial port. ( R2) will play buzzer sounds and white lights when 9 and B are received from the serial port. Finally, (R3) will illuminate the game on the LED when it gets an D or E from the serial port.
+
+4. Final Project Design stating Expected Inputs/Outputs
+
+Expected Inputs:
+
+Game Start Button: This button is located inside the game and accessible by reaching through the side of the game.
+
+Player Buttons: Each player will have a button to press in response to the white light and piezo sound. These buttons will be the primary input method for the players to register their reaction time.
+
+Expected Outputs:
+
+White Light and Piezo Sound: These signals will trigger the players to press buttons. The white light will be used as a visual cue, and the piezo sound will provide an auditory cue. These inputs will be directly integrated into the circuit.
+
+Reaction Time Display: The fastest player’s reaction time will be displayed on the LCD screen. Additionally, the time differences between the other players will be displayed. This output will be facilitated through the microcontroller's programming.
+
+Visual Indicators: LEDs will provide visual cues to the players. A pulsing yellow light will signal the start of the game, and another color (e.g., red) can indicate disqualification for premature button presses. The microcontroller will control these visual cues based on the game's logic.
+
+5. Final Description of the original work being attempted by your project
+
+The “Quickfire Game” was inspired by a simple yet engaging electronic game called the "Reaction Timer Game" [1]. In this original game, players press a button to start and watch an LED light change through random colors. The goal is to release the button when the LED turns red quickly. The time it takes for the player to react is shown in milliseconds on an LCD screen. There's also a buzzer that makes random sounds to make the game more challenging. If you let go of the button too early, you must start over.
+
+The game uses an RGB LED, a special light that combines red, green, and blue to make different colors. The LED is on a small board with built-in resistors, making it easy to set up. To build the game, you assemble parts like the LCD screen, a button, the LED, and a buzzer on a breadboard and connect them to an Arduino controller. The game's software is designed so you can't predict when the LED will turn red. The original game is not just fun but also teaches you about electronics and programming. It's the foundation for the "Quickfire Game," which turns this concept into a multiplayer game for everyone to enjoy
+
+6. Discussion on how to build your project (think Lab Reports) -
+
+Gather the necessary components:
+
+Arduino or similar microcontroller board
+
+White light sensor module
+
+Piezo buzzer module
+
+Push buttons (for each player)
+
+LEDs (yellow, red)
+
+LCD display module
+
+Resistors (for LEDs and buttons)
+
+Jumper wires
+
+Breadboard (optional, for prototyping)
+
+Set up the development environment:
+
+Install the Arduino IDE or PlatformIO on your computer.
+
+Open the project in your chosen IDE.
+
+Build the circuit:
+
+Follow the provided schematic as a reference.
+
+Start by placing the Arduino board on a breadboard.
+
+Connect the LCD display to the Arduino using jumper wires and resistors as per the schematic.
+
+Wire up the pushbuttons, arcade buttons, LEDs, piezo speaker, and potentiometer according to the schematic.
+
+Test each component individually to ensure proper functionality.
+
+Upload the code:
+
+Connect your Arduino board to your computer via USB.
+
+Open the project code in your IDE.
+
+Compile and upload the code to your Arduino board.
+
+Verify that the code is running correctly by observing the initial test routine that cycles through lighting all the LEDs, sounding the piezo, and displaying text on the LCD.
+
+Integrate the circuit into the case:
+
+Design and build a case to house your circuit and components.
+
+Arrange the breadboards and components within the case based on your desired layout.
+
+Ensure that the USB port of the Arduino is accessible for future code updates or power supply.
+
+Test and refine:
+
+Power on the game and test all functionalities thoroughly.
+
+Play the game with multiple players to ensure proper operation and gameplay experience.
+
+Make any necessary adjustments to the circuit or code based on testing results.
+
+7. Discussion on how your project is to be used (think User Guide)
+
+Powering On: Connect the Arduino to a power source (either a USB cable or a battery, if installed).
+
+Player Arrangement: Up to four players can participate. Each player should stand or sit near their designated button.
+
+Playing the Game:
+
+Starting a Round: Press the 'Start' button to begin. A random delay will occur, during which a pulsing yellow light appears.
+
+Go Signal: Watch for the white light and listen for the piezo sound. These signals indicate it's time to press your button.
+
+React and Press: Players must quickly press their button in response to the go signal. The fastest reaction time will be captured.
+
+Results: The LCD screen displays the winning player's reaction time and how much slower the other players were.
+
+Disqualification: If players press their button too early (before the go signal), they are disqualified from that round, indicated by a different LED color (e.g., red).
+
+Safety and Care:
+
+Keep the game away from water and extreme temperatures.
+
+Supervise young children to ensure they handle the electronic components properly.
+
+Troubleshooting:
+
+If the game isn't functioning correctly, check all connections and ensure the Arduino is properly powered.
+
+Timeline of Development given in a week-by-week format of completed items
+
+Weekly meetings:
+
+Sunday: Weekly tasks to be finished.
+
+Week ending 03/10:
+
+Start coding in Tinker
+
+Week ending 03/17:
+
+Build a game case.
+
+Week ending 03/24:
+
+Complete logic software in Tinkercad
+
+Week ending 03/31:
+
+Milestone 4 (Update MS3)
+
+Week ending 04/07:
+
+Assemble the game in the lab.
+
+First Hardwear test.
+
+Final testing.
+
+Week ending 04/14:
+
+Completed Project Due 4/14
+
+Milestone 5(Slides) Due 4/14
+
+Week ending 04/21:
+
+Design Presentation on Monday, 4/15/24
+
+Milestone 6 (Design Presentation), 7 (Critique) ( At the EXPO 4/15)
+
+Week ending 04/28:
+
+Project Demonstration on Monday 4/22/24
+
+Milestone 9 Due 4/24
+
+Milestone 10
+
+Final List of Materials Needed
+
+Electronic Components:
+
+Arduino or similar microcontroller board
+
+White light sensor module
+
+Piezo buzzer module
+
+Push buttons (for each player)
+
+LEDs (yellow, red)
+
+LCD module
+
+Resistors (for LEDs and buttons)
+
+Jumper wires
+
+Breadboard (optional, for prototyping)
+
+Miscellaneous:
+
+Power supply or batteries for the Arduino
+
+Computer/laptop for programming the Arduino
+
+USB cable (for connecting Arduino to computer)
+
+Final List of References
+
+[1] Author Unknown. (n.d.). Arduino Project Handbook [PDF]. Retrieved from
+
+Inclusion of final diagrams to identify your project’s hardware is REQUIRED (diagrams should use Fritzing diagrams)
+
+Inclusion of final code sketches to identify your project’s software is REQUIRED (include all of the .ino code in the PDF document)
+
+Although the game was inspired by a similar game on the internet, ALL of the following C++ code was written by the team members, not taken from the internet.
+
+quickfire_T1.ino
+
+**************************************************************************************************************************************************************************************************************************
+
+// ******HEADER******
+
+//Group Number: 42
+
+//Quickfire Game
+
+//Salvatore Amico, samic2@uic.edu, UIN: 654385516
+
+//Quickfire Game (Abstract):
+
+//The "Quickfire Game" is a 2-4 player game built around an Arduino board, ideal for group enjoyment and skill enhancement.
+
+//It challenges players to swiftly react to a light and sound cue, with their reaction times sparking friendly rivalry.
+
+//It features multiplayer and single-player modes and is perfect for gatherings and solo play.
+
+//The construction includes assembling LEDs, buttons, resistors, and an LCD into a case, offering a hands-on experience in electronics.
+
+//The "Quickfire Game" is a great choice for family and friends, combining entertainment with educational value.
+
+// ********Transmitter************
+
+// Arduino includes
+
+#include <LiquidCrystal.h>
+
+// Lcd pin setup
+
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
+
+// LED pin assignments
+
+#define LED_BUTTON_YELLOW 6
+
+#define LED_BUTTON_RED 7
+
+#define LED_BUTTON_BLUE 8
+
+#define LED_BUTTON_GREEN 9
+
+#define POWER_BUTTON 10
+
+// Arduino Reciver 1 components.
+
+#define RED_LED_ON '1'
+
+#define RED_LED_OFF '2'
+
+#define GREEN_LED_ON '3'
+
+#define GREEN_LED_OFF '4'
+
+#define YELLOW_LED_ON '5'
+
+#define YELLOW_LED_OFF '6'
+
+#define BLUE_LED_ON '7'
+
+#define BLUE_LED_OFF '8'
+
+#define LED_BLINK 'F'
+
+// Arduino Reciver 2 components.
+
+#define PIZO_BUZZER_ON '9'
+
+#define PIZO_BUZZER_OFF 'A'
+
+#define ACTION_LIGHTS_ON 'B'
+
+#define ACTION_LIGHTS_OFF 'C'
+
+// Arduino Reciver 3 components.
+
+#define POWER_BUTTON_ON 'D'
+
+#define POWER_BUTTON_OFF 'E'
+
+// LCD disply 16 x 2.
+
+const int SCREENWIDTH = 16;
+
+const int SCREENHIGHT = 2;
+
+const int LINE1 = 0;
+
+const int LINE2 = 1;
+
+int stringStart = 0;
+
+int stringEnd = 0;
+
+int scrollCursor = 16;
+
+// **********LCD Print messages**********
+
+// 16 or less per line please.
+
+// Welcome screen
+
+String welcomeLine_1 = "Welcome to";
+
+String welcomeLine_2 = "Quick Fire!";
+
+String welcomeLine_3 = "Press red";
+
+String welcomeLine_4 = "for the rules!";
+
+// Rules
+
+String ruelsLine_1 = "Quick to press!";
+
+String ruelsLine_2 = "First buzz wins";
+
+String ruelsLine_3 = "Buzzer ends race";
+
+String ruelsLine_4 = "Ready, set, go!";
+
+String ruelsLine_5 = "Press Green";
+
+String ruelsLine_6 = "to play!";// the last line
+
+// Stats
+
+String gameStatsLine_1 = "Best Time Ever: ";
+
+String gameStatsLine_2 = "New Best: ";
+
+// Playing screen
+
+String gamePlayingLine_1 = "Playing!";
+
+String gamePlayingLine_2 = "Wait for it ...";
+
+String gamePlayingLine_3 = "Go ! ! !";
+
+// Quiting
+
+String quitingLine_1 = "Quiting...";
+
+String quitingLine_2 = "Game Over";
+
+//**********END MESSAGES**********//
+
+// Game stats
+
+//double playerRedTime;
+
+//double playerYellowTime;
+
+//double playerBlueTime;
+
+//double playerGreenTime;
+
+String winner;
+
+//String highWinner;
+
+// Game states of play
+
+bool playing;
+
+bool gameOFF;
+
+bool goIndicator;
+
+bool displayed;
+
+bool playerWin;
+
+//set delay timer for debounce
+
+unsigned long prevButtonChangeTime = millis();
+
+unsigned long durationDebounce = 50;
+
+// Player timers
+
+unsigned long yellow_start_time;
+
+unsigned long yellow_end_time;
+
+unsigned long yellow_duration;
+
+unsigned long red_start_time;
+
+unsigned long red_end_time;
+
+unsigned long red_duration;
+
+unsigned long blue_start_time;
+
+unsigned long blue_end_time;
+
+unsigned long blue_duration;
+
+unsigned long green_start_time;
+
+unsigned long green_end_time;
+
+unsigned long green_duration;
+
+byte yellowButtonStatus;
+
+byte redButtonStatus;
+
+byte blueButtonStatus;
+
+byte greenButtonStatus;
+
+byte powerButtoStatus;
+
+void setup()
+
+{
+
+// start serial communication
+
+Serial.begin(9600);
+
+// Assign pin modes
+
+pinMode(POWER_BUTTON, INPUT_PULLUP);
+
+pinMode(LED_BUTTON_YELLOW, INPUT_PULLUP);
+
+pinMode(LED_BUTTON_RED, INPUT_PULLUP);
+
+pinMode(LED_BUTTON_BLUE, INPUT_PULLUP);
+
+pinMode(LED_BUTTON_GREEN, INPUT_PULLUP);
+
+// Test lights and buzzer.
+
+Serial.write(LED_BLINK);
+
+delayHelper(1000);
+
+Serial.write(ACTION_LIGHTS_ON);
+
+// Display initial welcome message.
+
+lcd.begin(SCREENWIDTH,SCREENHIGHT);
+
+lcd.setCursor(0, LINE1);
+
+lcd.print(welcomeLine_1);
+
+lcd.setCursor(0, LINE2);
+
+lcd.print(welcomeLine_2);
+
+delayHelper(1000);
+
+lcd.clear();
+
+gameOFF =false;
+
+}
+
+void loop()
+
+{
+
+Serial.write(POWER_BUTTON_ON);
+
+// when the game is turned off.
+
+while (gameOFF)
+
+{
+
+Serial.write(POWER_BUTTON_OFF);
+
+powerButtoStatus = digitalRead(POWER_BUTTON);
+
+if (powerButtoStatus == LOW)
+
+{
+
+Serial.write(POWER_BUTTON_ON);
+
+gameOFF = false;
+
+delayHelper(50);
+
+}
+
+}
+
+// While the game is not in play mode.
+
+//********************************************//
+
+while (!playing )
+
+{
+
+//Listening for button presses
+
+redButtonStatus = digitalRead(LED_BUTTON_RED);
+
+powerButtoStatus = digitalRead(POWER_BUTTON);
+
+lcd.setCursor(0, LINE1);
+
+lcd.print(welcomeLine_3);
+
+lcd.setCursor(0, LINE2);
+
+lcd.print(welcomeLine_4);
+
+// turnoff the game
+
+if (powerButtoStatus == LOW)
+
+{
+
+quit();
+
+lcd.clear();
+
+}
+
+if (redButtonStatus == LOW)
+
+{
+
+lcd.clear();
+
+Serial.write(RED_LED_ON);
+
+delayHelper(500);
+
+Serial.write(RED_LED_OFF);
+
+displayRules();
+
+}
+
+}// End while(!playing)
+
+//********************************************//
+
+// ********************GAME PLAY LOOP********************//
+
+while(playing && !gameOFF )
+
+{
+
+if (!displayed)
+
+{
+
+lcd.clear();
+
+displayStats();
+
+delayHelper(500);
+
+displayed = true;
+
+lcd.clear();
+
+}
+
+if ( !goIndicator)
+
+{
+
+lcd.setCursor(0, LINE1);
+
+lcd.print(gamePlayingLine_1);
+
+lcd.setCursor(0, LINE2);
+
+lcd.print(gamePlayingLine_2);
+
+delayHelper(randomNum());
+
+lcd.clear();
+
+lcd.print(gamePlayingLine_3);
+
+goIndicator = true;
+
+Serial.write(ACTION_LIGHTS_ON);
+
+}
+
+// ********WE ARE WORKING HERE!**********//
+
+// TODO: the power button is not working
+
+// 	   at all pioints in the game.
+
+// TODO: The game loop is still buggy
+
+// TODO: The rule menue is displayed every cycle of the game loop.
+
+// TODO: finish random number generator line 324
+
+// TODO: no debounceing was done.
+
+while (!playerWin)
+
+{
+
+//Listening for button presses
+
+powerButtoStatus = digitalRead(POWER_BUTTON);
+
+blueButtonStatus = digitalRead(LED_BUTTON_BLUE);
+
+yellowButtonStatus = digitalRead(LED_BUTTON_YELLOW);
+
+redButtonStatus = digitalRead(LED_BUTTON_RED);
+
+greenButtonStatus = digitalRead(LED_BUTTON_GREEN);
+
+// turnoff the game
+
+if (powerButtoStatus == LOW)
+
+{
+
+quit();
+
+lcd.clear();
+
+}
+
+if (redButtonStatus == LOW)
+
+{
+
+Serial.write(RED_LED_ON);
+
+delayHelper(500);
+
+Serial.write(RED_LED_OFF);
+
+playerWin =true;
+
+winner ="Red";
+
+}
+
+if (yellowButtonStatus == LOW)
+
+{
+
+Serial.write(YELLOW_LED_ON);
+
+delayHelper(500);
+
+Serial.write(YELLOW_LED_OFF);
+
+playerWin =true;
+
+winner ="Yellow";
+
+}
+
+if (greenButtonStatus == LOW)
+
+{
+
+Serial.write(GREEN_LED_ON);
+
+delayHelper(500);
+
+Serial.write(GREEN_LED_OFF);
+
+playerWin =true;
+
+winner ="Green";
+
+}
+
+if (blueButtonStatus == LOW)
+
+{
+
+Serial.write(BLUE_LED_ON);
+
+delayHelper(500);
+
+Serial.write(BLUE_LED_OFF);
+
+playerWin =true;
+
+winner ="Blue";
+
+}
+
+}//End while (playerWin)
+
+displayStats();
+
+delayHelper(2000);
+
+lcd.clear();
+
+playing = false;
+
+displayed = false;
+
+goIndicator = false;
+
+playerWin = false;
+
+}// End while(playing)
+
+}// End loop()
+
+// ********************Game methods**********************
+
+// TODO:Gennerate random numbers from 50 to 1000
+
+// 		and return the number as an int..
+
+int randomNum()
+
+{
+
+return 500;
+
+}
+
+//***GOOD***
+
+void displayStats()
+
+{
+
+lcd.setCursor(0, LINE1);
+
+lcd.print(gameStatsLine_2 + winner);
+
+}
+
+// ***GOOD***
+
+void displayRules()
+
+{
+
+bool buttonPressed = false;
+
+while (!buttonPressed)
+
+{
+
+lcd.setCursor(0, LINE1);
+
+lcd.print(ruelsLine_1);
+
+lcd.setCursor(0, LINE2);
+
+lcd.print(ruelsLine_2);
+
+delayHelper(2000);
+
+lcd.clear();
+
+lcd.setCursor(0, LINE1);
+
+lcd.print(ruelsLine_3);
+
+lcd.setCursor(0, LINE2);
+
+lcd.print(ruelsLine_4);
+
+delayHelper(2000);
+
+lcd.clear();
+
+lcd.setCursor(0, LINE1);
+
+lcd.print(ruelsLine_5);
+
+lcd.setCursor(0, LINE2);
+
+lcd.print(ruelsLine_6);
+
+delayHelper(2000);
+
+while (!buttonPressed)
+
+{
+
+//Listening for button presses
+
+greenButtonStatus = digitalRead(LED_BUTTON_GREEN);
+
+yellowButtonStatus = digitalRead(LED_BUTTON_YELLOW);
+
+if (greenButtonStatus == LOW)
+
+{
+
+Serial.write(GREEN_LED_ON);
+
+delayHelper(500);
+
+Serial.write(GREEN_LED_OFF);
+
+playing = true;
+
+buttonPressed = true;
+
+break;
+
+}
+
+}// End while (!buttonPressed)
+
+}
+
+}
+
+//***GOOD***
+
+void quit()
+
+{
+
+gameOFF = true;
+
+lcd.clear();
+
+lcd.setCursor(1, LINE2);
+
+lcd.print(quitingLine_1);
+
+delayHelper(500);
+
+}
+
+// Delay that will not inerrupt program
+
+void delayHelper(unsigned long delayTime)
+
+{
+
+unsigned long currentMillis = millis();
+
+while (millis() - currentMillis < delayTime) {
+
+// Wait until enough time has passed
+
+}
+
+}
+
+// ******************End Game methods********************
+
+**************************************************************************************************************************************************************************************************************************
+
+quickfire_R1.ino
+
+**************************************************************************************************************************************************************************************************************************
+
+// C++ code
+
+// This reciver will control the main LED lights.
+
+// **********Reciver_1**********
+
+#define LED_RED 7
+
+#define LED_BLUE 8
+
+#define LED_YELLOW 6
+
+#define LED_GREEN 9
+
+// Arduino Reciver 1 components.
+
+#define RED_LED_ON '1'
+
+#define RED_LED_OFF '2'
+
+#define GREEN_LED_ON '3'
+
+#define GREEN_LED_OFF '4'
+
+#define YELLOW_LED_ON '5'
+
+#define YELLOW_LED_OFF '6'
+
+#define BLUE_LED_ON '7'
+
+#define BLUE_LED_OFF '8'
+
+#define LED_BLINK 'F'
+
+unsigned long previousMillis = 0;
+
+void setup()
+
+{
+
+pinMode(LED_RED, OUTPUT);
+
+pinMode(LED_BLUE, OUTPUT);
+
+pinMode(LED_YELLOW, OUTPUT);
+
+pinMode(LED_GREEN, OUTPUT);
+
+Serial.begin(9600);
+
+}
+
+void loop()
+
+{
+
+// Listen for on/off comands
+
+if (Serial.available() > 0) {
+
+char command = Serial.read();
+
+// turn on/off differnt colors.
+
+if (command == RED_LED_ON) {
+
+digitalWrite(LED_RED, HIGH);
+
+}else if (command == RED_LED_OFF) {
+
+digitalWrite(LED_RED, LOW);
+
+}else if (command == GREEN_LED_ON) {
+
+digitalWrite(LED_GREEN, HIGH);
+
+}else if (command == GREEN_LED_OFF) {
+
+digitalWrite(LED_GREEN, LOW);
+
+}else if (command == YELLOW_LED_ON) {
+
+digitalWrite(LED_YELLOW, HIGH);
+
+}else if (command == YELLOW_LED_OFF) {
+
+digitalWrite(LED_YELLOW, LOW);
+
+}else if (command == BLUE_LED_ON) {
+
+digitalWrite(LED_BLUE, HIGH);
+
+}else if (command == BLUE_LED_OFF) {
+
+digitalWrite(LED_BLUE, LOW);
+
+}else if (command == LED_BLINK) {
+
+halfSecondBlink();
+
+}
+
+}
+
+}
+
+//In sequince blink
+
+void halfSecondBlink()
+
+{
+
+digitalWrite(LED_RED, HIGH);
+
+delayHelper(1000);
+
+digitalWrite(LED_RED, LOW);
+
+digitalWrite(LED_GREEN, HIGH);
+
+delayHelper(1000);
+
+digitalWrite(LED_GREEN, LOW);
+
+digitalWrite(LED_YELLOW, HIGH);
+
+delayHelper(1000);
+
+digitalWrite(LED_YELLOW, LOW);
+
+digitalWrite(LED_BLUE, HIGH);
+
+delayHelper(1000);
+
+digitalWrite(LED_BLUE, LOW);
+
+}
+
+void delayHelper(unsigned long delayTime)
+
+{
+
+unsigned long currentMillis = millis();
+
+while (millis() - currentMillis < delayTime) {
+
+// Wait until enough time has passed
+
+}
+
+}
+
+**************************************************************************************************************************************************************************************************************************
+
+quickfire_R2.ino
+
+**************************************************************************************************************************************************************************************************************************
+
+// C++ code
+
+// This reciver activates the buzzer and the go lights.
+
+// **********Reciver_2**********
+
+// Arduino Reciver 2 components.
+
+#define PIZO_BUZZER_ON '9'
+
+#define PIZO_BUZZER_OFF 'A'
+
+#define ACTION_LIGHTS_ON 'B'
+
+#define ACTION_LIGHTS_OFF 'C'
+
+//Pin locations
+
+#define BUZZER 4
+
+#define GOLIGHTS 2
+
+void setup()
+
+{
+
+Serial.begin(9600);
+
+pinMode(BUZZER,OUTPUT);
+
+pinMode(GOLIGHTS, OUTPUT);
+
+//digitalWrite(GOLIGHTS, HIGH);
+
+}
+
+void loop()
+
+{
+
+// Listen for on/off commands
+
+if (Serial.available() > 0)
+
+{
+
+char command = Serial.read();
+
+if (command == 'B')
+
+{
+
+goLightFlashing();
+
+}
+
+}
+
+}
+
+void goLightFlashing()
+
+{
+
+for(int i = 0; i < 10;i++)
+
+{
+
+digitalWrite(BUZZER, HIGH);
+
+digitalWrite(GOLIGHTS, HIGH);
+
+delayHelper(50);
+
+digitalWrite(BUZZER, LOW);
+
+digitalWrite(GOLIGHTS, LOW);
+
+delayHelper(50);
+
+i++;
+
+}
+
+}
+
+// Delay that will not inerrupt program
+
+void delayHelper(unsigned long delayTime)
+
+{
+
+unsigned long currentMillis = millis();
+
+while (millis() - currentMillis < delayTime) {
+
+// Wait until enough time has passed
+
+}
+
+}
+
+**************************************************************************************************************************************************************************************************************************
+
+quickfire_R3.ino
+
+**************************************************************************************************************************************************************************************************************************
+
+// C++ code
+
+//
+
+// This reciver just turns on the power light.
+
+// **********Reciver_3**********
+
+// Arduino Reciver 3 components.
+
+#define POWER_BUTTON_ON 'D'
+
+#define POWER_BUTTON_OFF 'E'
+
+#define LED_RED 2
+
+void setup()
+
+{
+
+pinMode(LED_RED, OUTPUT);
+
+Serial.begin(9600);
+
+}
+
+void loop()
+
+{
+
+// Listen for on/off commands
+
+if (Serial.available() > 0)
+
+{
+
+char command = Serial.read();
+
+// turn on/off differnt colors.
+
+if (command == POWER_BUTTON_ON)
+
+{
+
+digitalWrite(LED_RED, HIGH);
+
+}
+
+else if (command == POWER_BUTTON_OFF)
+
+{
+
+digitalWrite(LED_RED, LOW);
+
+}
+
+}
+
+}
+
+**************************************************************************************************************************************************************************************************************************
