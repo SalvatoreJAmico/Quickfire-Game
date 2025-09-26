@@ -21,9 +21,9 @@ Players react to a light + sound cue; the fastest reaction time is shown on an L
 - R3: power LED
 
 ## 📸 Screenshots
-Add images to `images/` and reference them here, e.g.:
-![Poster Preview](images/poster-slide-1.png)
-![System Concept](images/concept-block-diagram.png)
+Here are some visuals from the original project presentation:
+
+![Quickfire Poster](images/slide_1_img_4.jpg)
 
 ## 🚀 How to Build/Run
 1. Assemble the circuit (LEDs, buttons, resistors, LCD, buzzer).
