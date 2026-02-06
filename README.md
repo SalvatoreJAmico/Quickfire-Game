@@ -36,4 +36,5 @@ Here are some visuals from the original project presentation:
 This repository is a cleaned personal version: it removes other students' names/UINs/emails from course artifacts
 and retains only technical content for portfolio purposes.
 
-**Author:** Salvatore Amico (samic2@uic.edu), UIC CS
+**Author:** Salvatore Amico (samico8731@gmail.com
+
